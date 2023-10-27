@@ -18,8 +18,9 @@ function genPass($p_length, $characters)
     return $password;
 }
 
+$post_number = isset($_POST['number']) ? $_POST['number'] : '';
 
-$gen_pass = genPass($_POST['number'], $characters_list);
+$gen_pass = genPass($post_number, $characters_list);
 
 function checkPass($pass) {
     if(strlen($pass) >= 8 && strlen($pass) <= 32) {
