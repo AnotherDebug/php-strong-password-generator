@@ -19,7 +19,7 @@ function genPass($p_length, $characters)
 }
 
 
-$gen_pass = genPass(33, $characters_list);
+$gen_pass = genPass($_POST['number'], $characters_list);
 
 function checkPass($pass) {
     if(strlen($pass) >= 8 && strlen($pass) <= 32) {
@@ -33,10 +33,18 @@ var_dump(checkPass($gen_pass));
 
 var_dump($gen_pass);
 
-$message = "";
+$message = "Scegli una password con un minimo di 8 caratteri ed un massimo di 32 caratteri.";
+
+
 
 if(isset($_POST['number'])) {
-    echo "ok";
+    $password_length = $_POST['number'];
+    if(checkPass($gen_pass)) {
+        $message = "La password generata è: $gen_pass";
+        $gen_pass = genPass($password_length, $characters_list);
+    }else {
+        $message = "Errore! La lunghezza della password deve avere un minimo di 8 caratteri e un massimo di 32 caratteri";
+    };
 }
 
 ?>
@@ -66,7 +74,7 @@ if(isset($_POST['number'])) {
         <h3 class="text-center text-light ">Genera una password sicura</h3>
         <div class="container">
             <div class="message bg-info">
-                <p class="lh-5 p-3 ">Messaggio di prova</p>
+                <p class="lh-5 p-3 "><?php echo $message ?></p>
             </div>
             <div class="genPassBox bg-light ">
 
