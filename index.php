@@ -1,7 +1,26 @@
 <?php
+$upper_list = "QWERTYUIOPASDFGHJKLZXCVBNM";
+$lower_list = "qwertyuiopasdfghjklzxcvbnm";
+$number_list = "1234567890";
+$special_chars_list = "!@#$%^&*-_?><.;/|";
+$characters_list = $upper_list . $lower_list . $number_list . $special_chars_list;
+
+function genPass($p_length, $characters) {
+  $password = '';
+  $characters_list_length = strlen($characters);
+
+  for ($i = 0; $i < $p_length; $i++) {
+    $random_index = rand(0, $characters_list_length - 1);
+    $password .= $characters[$random_index];
+  }
+
+  return $password;
+}
 
 
+$gen_pass = genPass(12,$characters_list);
 
+var_dump($gen_pass);
 
 ?>
 
@@ -20,7 +39,7 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 
-<body class="bg-black">
+<body class="bg-gray">
 
     <header>
         <h1 class="text-center mt-5 text-info">STRONG PASS GENERATOR</h1>
@@ -33,20 +52,24 @@
                 <p class="lh-5 p-3 ">Messaggio di prova</p>
             </div>
             <div class="genPassBox bg-light ">
-                <div class="row d-flex align-items-center p-3 ">
-                    <div class="col-6">
-                        <p class="fw-bold">Lunghezza Password:</p>
-                    </div>
-                    <div class="col-6">
-                        <div class="mb-3">
-                            <input type="text" class="form-control w-50 " id="text" placeholder="Inserisci un numero.">
+
+                <form action="index.php" method="POST">
+                    <div class="row d-flex align-items-center p-3 ">
+                        <div class="col-6">
+                            <p class="fw-bold">Lunghezza Password:</p>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <input type="text" class="form-control w-50 " id="text" placeholder="Inserisci un numero.">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <button type="submit" class="btn btn-primary">Invia</button>
+                            <button type="reset" class="btn btn-secondary">Annulla</button>
                         </div>
                     </div>
-                    <div class="col">
-                    <button type="submit" class="btn btn-primary">Invia</button>
-                    <button type="button" class="btn btn-secondary">Annulla</button>
-                    </div>
-                </div>
+                </form>
+
             </div>
         </div>
     </main>
