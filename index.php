@@ -5,22 +5,39 @@ $number_list = "1234567890";
 $special_chars_list = "!@#$%^&*-_?><.;/|";
 $characters_list = $upper_list . $lower_list . $number_list . $special_chars_list;
 
-function genPass($p_length, $characters) {
-  $password = '';
-  $characters_list_length = strlen($characters);
+function genPass($p_length, $characters)
+{
+    $password = '';
+    $characters_list_length = strlen($characters);
 
-  for ($i = 0; $i < $p_length; $i++) {
-    $random_index = rand(0, $characters_list_length - 1);
-    $password .= $characters[$random_index];
-  }
+    for ($i = 0; $i < $p_length; $i++) {
+        $random_index = rand(0, $characters_list_length - 1);
+        $password .= $characters[$random_index];
+    }
 
-  return $password;
+    return $password;
 }
 
 
-$gen_pass = genPass(12,$characters_list);
+$gen_pass = genPass(33, $characters_list);
+
+function checkPass($pass) {
+    if(strlen($pass) >= 8 && strlen($pass) <= 32) {
+        return true;
+    }else {
+        return false;
+    }
+};
+
+var_dump(checkPass($gen_pass));
 
 var_dump($gen_pass);
+
+$message = "";
+
+if(isset($_POST['number'])) {
+    echo "ok";
+}
 
 ?>
 
@@ -53,6 +70,7 @@ var_dump($gen_pass);
             </div>
             <div class="genPassBox bg-light ">
 
+                <!-- FORM -->
                 <form action="index.php" method="POST">
                     <div class="row d-flex align-items-center p-3 ">
                         <div class="col-6">
@@ -60,7 +78,7 @@ var_dump($gen_pass);
                         </div>
                         <div class="col-6">
                             <div class="mb-3">
-                                <input type="text" class="form-control w-50 " id="text" placeholder="Inserisci un numero.">
+                                <input type="text" name="number" class="form-control w-50 " id="text" placeholder="Inserisci un numero.">
                             </div>
                         </div>
                         <div class="col">
