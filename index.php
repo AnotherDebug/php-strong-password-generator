@@ -30,9 +30,9 @@ function checkPass($pass) {
     }
 };
 
-var_dump(checkPass($gen_pass));
+//var_dump(checkPass($gen_pass));
 
-var_dump($gen_pass);
+//var_dump($gen_pass);
 
 $message = "Scegli una password con un minimo di 8 caratteri ed un massimo di 32 caratteri.";
 
@@ -46,6 +46,12 @@ if(isset($_POST['number'])) {
     }else {
         $message = "Errore! La lunghezza della password deve avere un minimo di 8 caratteri e un massimo di 32 caratteri";
     };
+}
+
+if (isset($_POST['reset'])) {
+    $_POST['number'] = '';
+    $gen_pass = '';
+    $message = "Scegli una password con un minimo di 8 caratteri ed un massimo di 32 caratteri.";
 }
 
 ?>
@@ -92,7 +98,7 @@ if(isset($_POST['number'])) {
                         </div>
                         <div class="col">
                             <button type="submit" class="btn btn-primary">Invia</button>
-                            <button type="reset" class="btn btn-secondary">Annulla</button>
+                            <button type="submit" name="reset" class="btn btn-secondary">Annulla</button>
                         </div>
                     </div>
                 </form>
