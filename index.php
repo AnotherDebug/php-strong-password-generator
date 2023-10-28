@@ -40,22 +40,11 @@ if (isset($_POST['reset'])) {
     $message = "Scegli una password con un minimo di 8 caratteri ed un massimo di 32 caratteri.";
 }
 
+require_once __DIR__ . '/partials/head.php';
+
 ?>
 
-<!DOCTYPE html>
-<html lang="it">
 
-<head>
-    <title>PHP Strong Password Generator</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-
-    <link href="css/style.css" rel="stylesheet">
-</head>
 
 <body class="bg-black">
 
