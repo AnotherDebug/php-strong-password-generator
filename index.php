@@ -2,13 +2,7 @@
 
 require_once __DIR__ . '/data/functions.php';
 
-$upper_list = "QWERTYUIOPASDFGHJKLZXCVBNM";
-$lower_list = "qwertyuiopasdfghjklzxcvbnm";
-$number_list = "1234567890";
-$special_chars_list = "!@#$%^&*-_?><.;/|";
-$characters_list = $upper_list . $lower_list . $number_list . $special_chars_list;
-
-
+require_once __DIR__ . '/data/variables.php';
 
 $post_number = isset($_POST['number']) ? $_POST['number'] : '';
 
