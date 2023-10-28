@@ -25,10 +25,11 @@ $message = "Scegli una password con un minimo di 8 caratteri ed un massimo di 32
 
 
 if(isset($_POST['number'])) {
-    $password_length = $_POST['number'];
     if(checkPass($gen_pass)) {
-        $message = "La password generata è: $gen_pass";
-        $gen_pass = genPass($password_length, $characters_list);
+        session_start();
+        //array globale
+        $_SESSION['send_pass'] = $_POST['number'];
+        header('location: ./success_page.php');
     }else {
         $message = "Errore! La lunghezza della password deve avere un minimo di 8 caratteri e un massimo di 32 caratteri";
     };
@@ -46,7 +47,7 @@ require_once __DIR__ . '/partials/head.php';
 
 
 
-<body class="bg-black">
+<body class="bg-gray">
 
     <header>
         <h1 class="text-center mt-5 text-info">STRONG PASS GENERATOR</h1>
@@ -63,10 +64,10 @@ require_once __DIR__ . '/partials/head.php';
                 <!-- FORM -->
                 <form action="index.php" method="POST">
                     <div class="row d-flex align-items-center p-3 ">
-                        <div class="col-6">
+                        <div class="col-3">
                             <p class="fw-bold">Lunghezza Password:</p>
                         </div>
-                        <div class="col-6">
+                        <div class="col-9">
                             <div class="mb-3">
                                 <input type="text" name="number" class="form-control w-50 " id="text" placeholder="Inserisci un numero.">
                             </div>
