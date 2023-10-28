@@ -41,7 +41,7 @@ require_once __DIR__ . '/partials/head.php';
 
 
 
-<body class="bg-gray">
+<body class="bg-black">
 
     <header>
         <h1 class="text-center mt-5 text-info">STRONG PASS GENERATOR</h1>
