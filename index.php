@@ -1,34 +1,20 @@
 <?php
+
+require_once __DIR__ . '/data/functions.php';
+
 $upper_list = "QWERTYUIOPASDFGHJKLZXCVBNM";
 $lower_list = "qwertyuiopasdfghjklzxcvbnm";
 $number_list = "1234567890";
 $special_chars_list = "!@#$%^&*-_?><.;/|";
 $characters_list = $upper_list . $lower_list . $number_list . $special_chars_list;
 
-function genPass($p_length, $characters)
-{
-    $password = '';
-    $characters_list_length = strlen($characters);
 
-    for ($i = 0; $i < $p_length; $i++) {
-        $random_index = rand(0, $characters_list_length - 1);
-        $password .= $characters[$random_index];
-    }
-
-    return $password;
-}
 
 $post_number = isset($_POST['number']) ? $_POST['number'] : '';
 
 $gen_pass = genPass($post_number, $characters_list);
 
-function checkPass($pass) {
-    if(strlen($pass) >= 8 && strlen($pass) <= 32) {
-        return true;
-    }else {
-        return false;
-    }
-};
+
 
 //var_dump(checkPass($gen_pass));
 
@@ -71,7 +57,7 @@ if (isset($_POST['reset'])) {
     <link href="css/style.css" rel="stylesheet">
 </head>
 
-<body class="bg-gray">
+<body class="bg-black">
 
     <header>
         <h1 class="text-center mt-5 text-info">STRONG PASS GENERATOR</h1>
